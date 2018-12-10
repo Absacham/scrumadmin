@@ -2,25 +2,19 @@
 
 namespace App\Nova;
 
-use Laravel\Nova\Fields\BelongsTo;
-use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
-use Laravel\Nova\Fields\MorphToMany;
-use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Text;
-use Laravel\Nova\Fields\Gravatar;
-use Laravel\Nova\Fields\Password;
+use Laravel\Nova\Http\Requests\NovaRequest;
 
-class User extends Resource
+class Level extends Resource
 {
-
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\\User';
+    public static $model = 'App\Level';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -35,21 +29,13 @@ class User extends Resource
      * @var array
      */
     public static $search = [
-        'id', 'name', 'email',
+        'id',
     ];
 
     public static function label()
     {
-        return __('Usuarios');
+        return __('Experiencia');
     }
-
-    /**
-     * User constructor.
-     */
-
-    /**
-     * User constructor.
-     */
 
     /**
      * Get the fields displayed by the resource.
@@ -60,40 +46,7 @@ class User extends Resource
     public function fields(Request $request)
     {
         return [
-            Number::make('Numero de Documento', 'dni')
-                ->sortable()
-                ->rules('required', 'max:8'),
-
-            Gravatar::make('Avatar', 'email'),
-
-            Text::make('Nombre','name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Text::make('Apellidos','last_name')
-                ->sortable()
-                ->rules('required', 'max:255'),
-
-            Boolean::make('Estado', 'status')
-                ->withMeta(["value" => True]),
-
-            BelongsTo::make('Nivel de Experiencia', 'Level', 'App\Nova\Level'),
-
-            Text::make('Email')
-                ->sortable()
-                ->rules('required', 'email', 'max:254')
-                ->creationRules('unique:users,email')
-                ->updateRules('unique:users,email,{{resourceId}}'),
-
-            Password::make('Password')
-                ->onlyOnForms()
-                ->creationRules('required', 'string', 'min:6')
-                ->updateRules('nullable', 'string', 'min:6'),
-
-
-
-            MorphToMany::make('Roles', 'roles', \Vyuldashev\NovaPermission\Role::class),
-            MorphToMany::make('Permissions', 'permissions', \Vyuldashev\NovaPermission\Permission::class),
+            Text::make('Nivel de Experiencia', 'name'),
         ];
     }
 
