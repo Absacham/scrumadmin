@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Policies\ProjectPolicy;
+use App\Project;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
@@ -17,7 +19,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\User' => 'App\Policies\UserPolicy',
         'App\Level' => 'App\Policies\LevelPolicy',
         'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy',
-        'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy'
+        'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
+//        Project::class => ProjectPolicy::class,
     ];
 
     /**

@@ -32,4 +32,12 @@ class User extends Authenticatable
     public function level(){
         return $this->belongsTo('App\Level');
     }
+
+    public function projects(){
+        return $this->belongsToMany('App\Project');
+    }
+
+    public function requirements(){
+        return $this->belongsToMany('App\Requirement');
+    }
 }

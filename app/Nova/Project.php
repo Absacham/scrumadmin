@@ -5,16 +5,17 @@ namespace App\Nova;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
+use Laravel\Nova\Fields\Textarea;
 use Laravel\Nova\Http\Requests\NovaRequest;
 
-class Level extends Resource
+class Project extends Resource
 {
     /**
      * The model the resource corresponds to.
      *
      * @var string
      */
-    public static $model = 'App\Level';
+    public static $model = 'App\Project';
 
     /**
      * The single value that should be used to represent the resource when being displayed.
@@ -32,11 +33,6 @@ class Level extends Resource
         'id', 'name'
     ];
 
-    public static function label()
-    {
-        return __('Experiencia');
-    }
-
     /**
      * Get the fields displayed by the resource.
      *
@@ -46,7 +42,11 @@ class Level extends Resource
     public function fields(Request $request)
     {
         return [
-            Text::make('Nivel de Experiencia', 'name'),
+            Text::make('Nombre del Proyecto', 'name')
+            ->rules('required'),
+
+            Textarea::make('Comentario', 'comment'),
+
         ];
     }
 
