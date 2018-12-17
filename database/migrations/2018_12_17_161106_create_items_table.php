@@ -17,9 +17,9 @@ class CreateItemsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->text('details');
-            $table->time('pessimistic');
-            $table->time('estimated');
-            $table->time('optimistic');
+            $table->double('pessimistic');
+            $table->double('estimated');
+            $table->double('optimistic');
             $table->unsignedInteger('requirement_id');
             $table->timestamps();
 

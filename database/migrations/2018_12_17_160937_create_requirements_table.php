@@ -18,7 +18,7 @@ class CreateRequirementsTable extends Migration
             $table->string('name');
             $table->integer('impact');
             $table->double('estimated_time');
-            $table->enum('priority', ['Bajo', 'Medio', 'Alto']);
+            $table->integer('priority');
             $table->text('details');
             $table->unsignedInteger('project_id');
             $table->timestamps();
