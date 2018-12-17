@@ -20,7 +20,7 @@ class AuthServiceProvider extends ServiceProvider
         'App\Level' => 'App\Policies\LevelPolicy',
         'Spatie\Permission\Models\Role' => 'App\Policies\RolePolicy',
         'Spatie\Permission\Models\Permission' => 'App\Policies\PermissionPolicy',
-//        Project::class => ProjectPolicy::class,
+        Project::class => ProjectPolicy::class,
     ];
 
     /**

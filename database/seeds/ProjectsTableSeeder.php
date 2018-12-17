@@ -1,9 +1,9 @@
 <?php
 
+use App\Project;
 use Illuminate\Database\Seeder;
-use Spatie\Permission\Models\Permission;
 
-class PermissionsTableSeeder extends Seeder
+class ProjectsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,16 +12,16 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
+        Project::create([
             'name' =>'Scrum Admin',
         ]);
-        Permission::create([
+        Project::create([
             'name' => 'Facebook',
         ]);
-        Permission::create([
+        Project::create([
             'name' => 'Google',
         ]);
-        Permission::create([
+        Project::create([
             'name' =>'Snapchat',
         ]);
     }

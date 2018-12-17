@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('nova-api/setProject', 'NovaController@setProject')->name('nova.set_project');

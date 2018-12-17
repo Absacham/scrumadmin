@@ -2,6 +2,8 @@
 
 namespace App\Nova;
 
+use Illuminate\Support\Facades\Auth;
+use Laravel\Nova\Fields\BelongsToMany;
 use Laravel\Nova\Fields\ID;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\Text;
@@ -46,6 +48,8 @@ class Project extends Resource
             ->rules('required'),
 
             Textarea::make('Comentario', 'comment'),
+
+            BelongsToMany::make('Usuarios', 'Users', 'App\Nova\User'),
 
         ];
     }
@@ -92,5 +96,28 @@ class Project extends Resource
     public function actions(Request $request)
     {
         return [];
+    }
+
+
+    /**
+     * Build an "index" query for the given resource.
+     *
+     * @param  \Laravel\Nova\Http\Requests\NovaRequest  $request
+     * @param  \Illuminate\Database\Eloquent\Builder  $query
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public static function indexQuery(NovaRequest $request, $query)
+    {
+
+        $user = Auth::user();
+//         If set, filte by business center
+        if($user->hasRole('Admin')){
+
+        } else {
+            $query->join('project_user', 'projects.id', '=', 'project_user.project_id')
+                ->where('project_user.user_id', '=',$user->id);
+        }
+
+        return $query;
     }
 }
