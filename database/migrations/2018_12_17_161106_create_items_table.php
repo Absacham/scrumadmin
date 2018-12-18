@@ -16,10 +16,10 @@ class CreateItemsTable extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->text('details');
-            $table->double('pessimistic');
-            $table->double('estimated');
-            $table->double('optimistic');
+            $table->text('details')->nullable();
+            $table->decimal('pessimistic',10,2);
+            $table->decimal('estimated',10,2);
+            $table->decimal('optimistic',10,2);
             $table->unsignedInteger('requirement_id');
             $table->timestamps();
 

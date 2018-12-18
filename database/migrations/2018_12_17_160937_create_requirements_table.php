@@ -17,10 +17,10 @@ class CreateRequirementsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('impact');
-            $table->double('estimated_time');
+            $table->decimal('estimated_time',13,2)->nullable();
             $table->integer('priority');
             $table->text('details');
-            $table->unsignedInteger('project_id');
+            $table->unsignedInteger('project_id')->nullable();
             $table->timestamps();
 
             $table->foreign('project_id')->references('id')->on('projects');

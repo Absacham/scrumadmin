@@ -15,7 +15,7 @@ class Requirement extends Model
     }
 
     public function project(){
-        return $this->belongsToMany('App\Project');
+        return $this->belongsTo('App\Project');
     }
 
     public function items(){
