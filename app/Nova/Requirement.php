@@ -50,7 +50,7 @@ class Requirement extends Resource
             Text::make('Nombre','name')->rules('required','max:255')->sortable(),
             Number::make('Impacto','impact')->max(10)->min(0)->rules('numeric','max:10','min:0')->sortable(),
             Number::make('Prioridad','priority')->max(10)->min(1)->rules('numeric','max:10','min:1')->sortable(),
-            Number::make('Tiempo Estimado','estimated_time')->step('0.1')->rules('required'),
+            Number::make('Tiempo Estimado','estimated_time')->hideWhenUpdating()->hideWhenCreating(),
             Textarea::make('Detalles','details')->rules('max:900'),
             HasMany::make('Items','Items','App\Nova\Item')
         ];

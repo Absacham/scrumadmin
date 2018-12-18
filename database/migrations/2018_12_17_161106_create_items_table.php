@@ -18,8 +18,9 @@ class CreateItemsTable extends Migration
             $table->string('name');
             $table->text('details')->nullable();
             $table->decimal('pessimistic',10,2);
-            $table->decimal('estimated',10,2);
+            $table->decimal('normal',10,2);
             $table->decimal('optimistic',10,2);
+            $table->decimal('estimated',10,2)->nullable();
             $table->unsignedInteger('requirement_id');
             $table->timestamps();
 
