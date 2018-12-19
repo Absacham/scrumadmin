@@ -12,7 +12,7 @@ class Requirement extends Model
 
     public function users()
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User')->role('Analyst');
     }
 
     public function project()
